@@ -1,9 +1,16 @@
-const app = require('express')();
+const app = require('./app');
 const server = require('http').createServer(app);
-const io = require('socket.io')(server);
+const socketio = require('socket.io');
+
+const io = socketio(server);
 
 io.on('connection', (socket) => {
   console.log('New WS connection....');
+
+  socket.on('disconnect', () => {
+    console.log('User had left!!');
+  });
+
   socket.on('message', ({ name, message }) => {
     io.emit('message', { name, message });
   });
