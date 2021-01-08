@@ -1,6 +1,11 @@
 const app = require('./app');
 const server = require('http').createServer(app);
 const socketio = require('socket.io');
+const connectDB = require('./config/db');
+const dotenv = require('dotenv');
+
+dotenv.config();
+connectDB();
 
 const io = socketio(server);
 

@@ -3,12 +3,14 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Chat from './pages/Chat';
 import Join from './pages/join/Join';
+import Login from './pages/login/Login';
 
 const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route component={Join} path="/" exact />
+        <Route component={Login} path="/" exact />
+        <Route component={Join} path="/join" />
         <Route component={Chat} path="/chat" />
       </Switch>
     </BrowserRouter>
