@@ -48,7 +48,7 @@ export const {
 export const login = (email, password) => async (dispatch) => {
   dispatch(userLoading());
   try {
-    const { data } = await axios.post('http://localhost:4000/api/users/login', {
+    const { data } = await axios.post('/api/users/login', {
       email,
       password,
     });
@@ -82,10 +82,7 @@ export const getUserDetails = () => async (dispatch) => {
         Authorization: `Bearer ${token}`,
       },
     };
-    const { data } = await axios.get(
-      'http://localhost:4000/api/users/profile',
-      config
-    );
+    const { data } = await axios.get('/api/users/profile', config);
     console.log(data);
     dispatch(userDetailsSuccess(data));
   } catch (error) {
